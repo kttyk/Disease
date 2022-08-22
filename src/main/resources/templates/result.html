@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>計算結果</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+	<div class="row">
+			<h1>結果</h1>
+				<form th:action="@{/result}" th:object="${diagnoseForm}" method="post">
+				<table>
+					<tr th:each="test: ${get}">
+					<td th:text="${test.disease_name}"></td>
+					</tr>
+				</table>							
+				</form>
+	</div>
+</div>
+</body>
+</html>

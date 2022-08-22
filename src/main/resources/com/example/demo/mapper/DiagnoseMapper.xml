@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.DiagnoseMapper">
+	<select id="getDiseaseName" resultType="com.example.demo.entity.Disease">
+		select distinct
+			病名.disease_name as disease_name
+		from
+			diagnose 診断
+		inner join
+			disease_master 病名
+		on
+			診断.disease_id = 病名.id
+		where
+		(
+			#{kettochi} >= (select sub1.base_value
+						from diagnose sub1
+						where sub1.diagnostic_id = 1
+						and 診断.disease_id = sub1.disease_id)
+		and
+			#{hba1c} >= (select sub1.base_value
+					from diagnose sub1
+					where sub1.diagnostic_id = 2
+					and 診断.disease_id = sub1.disease_id)
+		)
+		OR
+		(
+			(
+				診断.diagnostic_id = 3
+			and
+				#{syusyuku} >= 診断.base_value
+			)
+			or
+			(
+				診断.diagnostic_id = 4
+			and
+				#{kakutyo} >= 診断.base_value
+			)
+		)
+		OR
+		(
+			(
+				診断.diagnostic_id = 5
+			and
+				診断.base_value > #{hdl}
+			)
+			or
+			(
+				診断.diagnostic_id = 6
+			and
+				#{ldl} >= 診断.base_value
+			)
+			or
+			(
+				診断.diagnostic_id = 7
+			and
+				#{tg} >= 診断.base_value
+			)
+		)
+	</select>
+</mapper>
