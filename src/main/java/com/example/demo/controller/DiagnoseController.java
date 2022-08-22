@@ -30,6 +30,7 @@ public class DiagnoseController {
 		return "index";
 	}
 	
+//	テスト
 
 	@GetMapping("/index")
 	public String getForm(@ModelAttribute("diagnoseForm") DiagnoseForm diagnose, BindingResult result, Model model) {
