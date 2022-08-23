@@ -4,10 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.example.demo.entity.Disease;
 import com.example.demo.entity.Supplement;
 
 @Mapper
 public interface SupplementMapper {
-	List<Supplement> getSupplement(List<Disease> disease);
+	List<Supplement> getSupplement(String diseaseName);
 }

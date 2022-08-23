@@ -15,19 +15,24 @@ public class GetSupplementService {
 	@Autowired
 	private SupplementMapper supplementMapper;
 	
-	StringBuilder sb = new StringBuilder();
-	
 	@Transactional
 	public List<Supplement> getSupplement(List<Disease> disease) {
-		for(Disease d:disease) {
-			String dName = "'" + d.getDisease_name() + "'";
-			if(disease.size() > 1) {
-				
-			}
-//		if(disease.size() > 1) {
-//			sb.append(dName + ',');
-//		}
+		String diseaseName = convertDisease(disease);
+
+		return supplementMapper.getSupplement(diseaseName);
+	}
+	private String convertDisease(List<Disease> disease) {
+		String dName = "";
+		if (disease.size() > 1) {
+			return dName = "'その他'";
+		}else if (disease.size() == 1) {
+			
 		}
-		return supplementMapper.getSupplement(disease);
+		for(Disease d:disease) {
+			dName = "'" + d.getDisease_name() + "'";
+		}
+		
+		return dName;
+		
 	}
 }
