@@ -20,7 +20,7 @@ public class DiagnoseForm {
 	private int hdl;
 	private int ldl;
 	private int tg;
-	
+	private String diseaseName;
 
 //    public int get() {
 //        if (kettochi >= 200 && hba1c >= 6.5){

@@ -12,4 +12,9 @@ public class Disease {
 //	private int disease_id;
 //	private double base_value;
 	private String disease_name;
+	private int id;
+	
+public String getDiseaseName() {
+	return disease_name;
+}
 }

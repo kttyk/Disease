@@ -29,7 +29,7 @@ public class DiagnoseController {
 	public String index() {
 		return "index";
 	}
-	
+//	test
 
 	@GetMapping("/index")
 	public String getForm(@ModelAttribute("diagnoseForm") DiagnoseForm diagnose, BindingResult result, Model model) {
@@ -38,11 +38,11 @@ public class DiagnoseController {
 	}
 
 	@PostMapping("/result")
-	public String getesult(@ModelAttribute("diagnoseForm") DiagnoseForm diagnose, BindingResult result, Model model) {
+	public String getResult(@ModelAttribute("diagnoseForm") DiagnoseForm diagnose, BindingResult result, Model model) {
 		List<Disease> disease = getdiseaseNameService.getDiseaseName(diagnose);
-		List<Supplement> supplement = getSupplementService.getSupplement(disease);
+		List<Supplement> supplementList = getSupplementService.getSupplement(disease);
 		model.addAttribute("disease", disease);
-		model.addAttribute("supplement", supplement);
+		model.addAttribute("supplement", supplementList);
 		return "result";
 	}
 }

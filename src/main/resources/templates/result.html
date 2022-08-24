@@ -11,11 +11,18 @@
 			<h1>結果</h1>
 				<form th:action="@{/result}" th:object="${diagnoseForm}" method="post">
 				<table>
-					<tr th:each="test: ${get}">
+					<tr th:each="test: ${disease}">
 					<td th:text="${test.disease_name}"></td>
 					</tr>
-				</table>							
-				</form>
+				</table>
+				</form>							
+				<table th:object="${diagnoseForm}">
+					<tr th:each="ts: ${supplement}">
+					<td th:text="${ts.url}"></td>
+					<td th:text="${ts.img_path}"></td>
+					</tr>
+				</table>		
+
 	</div>
 </div>
 </body>

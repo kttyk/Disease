@@ -5,13 +5,13 @@
 <mapper namespace="com.example.demo.mapper.DiagnoseMapper">
 	<select id="getDiseaseName" resultType="com.example.demo.entity.Disease">
 		select distinct
-			病名.disease_name as disease_name
+			診断結果.disease_name as disease_name
 		from
 			diagnose 診断
 		inner join
-			disease_master 病名
+			disease_master 診断結果
 		on
-			診断.disease_id = 病名.id
+			診断.disease_id = 診断結果.id
 		where
 		(
 			#{kettochi} >= (select sub1.base_value

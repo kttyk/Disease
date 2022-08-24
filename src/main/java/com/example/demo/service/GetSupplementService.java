@@ -21,18 +21,12 @@ public class GetSupplementService {
 
 		return supplementMapper.getSupplement(diseaseName);
 	}
-	private String convertDisease(List<Disease> disease) {
-		String dName = "";
+	public String convertDisease(List<Disease> disease) {
 		if (disease.size() > 1) {
-			return dName = "'その他'";
+			return "その他";
 		}else if (disease.size() == 1) {
-			
+			return disease.get(0).getDiseaseName();
 		}
-		for(Disease d:disease) {
-			dName = "'" + d.getDisease_name() + "'";
-		}
-		
-		return dName;
-		
+		return "";
 	}
 }
