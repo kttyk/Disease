@@ -7,3 +7,4 @@ public interface MessageConst {
 	public static final String MESSAGE_DISAPPOINTIG = "残念ながら";
 }
 
+//test
