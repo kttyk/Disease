@@ -9,6 +9,5 @@ import com.example.demo.form.DiagnoseForm;
 
 @Mapper
 public interface DiagnoseMapper {
-//	List<Disease> findAll();
 	List<Disease> getDiseaseName(DiagnoseForm form);
 }

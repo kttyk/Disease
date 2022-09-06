@@ -5,12 +5,12 @@
 <mapper namespace="com.example.demo.mapper.SupplementMapper">
 	<select id="getSupplement"
 		resultType="com.example.demo.entity.Supplement">
-		select
+		SELECT
 			img_path,
 			url
-		from
+		FROM
 			disease_master
-		where
+		WHERE
 			disease_name = #{diseaseName}
 	</select>
 </mapper>

@@ -1,29 +1,29 @@
 <!DOCTYPE HTML>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>計算結果</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="style.css">
+<title>計算結果</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="container">
 	<div class="row">
-			<h1>結果</h1>
-				<form th:action="@{/result}" th:object="${diagnoseForm}" method="post">
-				<table>
-					<tr th:each="test: ${disease}">
-					<td th:text="${test.disease_name}"></td>
-					</tr>
-				</table>
-				</form>							
-				<table th:object="${diagnoseForm}">
-					<tr th:each="ts: ${supplement}">
-					<td th:text="${ts.url}"></td>
-					<td th:text="${ts.img_path}"></td>
-					</tr>
-				</table>		
-
+		<h1>結果</h1>
+		<form class="result" th:action="@{/result}"
+			th:object="${diagnoseForm}" method="post">
+			<h2 th:text="${disease}"></h2>
+		</form>
+		<div th:object="${diagnoseForm}" th:each="ts: ${supplement}">
+			<div class="hakui">
+				<p>
+					<img th:src="@{/images/白衣.png}">
+				</p>
+				<div class="balloon2">
+					<img th:src="${ts.img_path}">
+				</div>
+			</div>
+			<a class="url" th:href="${ts.url}">おすすめのレシピ</a>
+		</div>
 	</div>
-</div>
+	<a type="submit" th:href="@{/index}" class="button">診断へ戻る</a>
 </body>
 </html>

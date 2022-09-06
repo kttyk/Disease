@@ -4,15 +4,15 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.DiagnoseMapper">
 	<select id="getDiseaseName" resultType="com.example.demo.entity.Disease">
-		select distinct
+		SELECT distinct
 			診断結果.disease_name as disease_name
-		from
+		FROM
 			diagnose 診断
-		inner join
+		INNER JOIN
 			disease_master 診断結果
-		on
+		ON
 			診断.disease_id = 診断結果.id
-		where
+		WHERE
 		(
 			#{kettochi} >= (select sub1.base_value
 						from diagnose sub1

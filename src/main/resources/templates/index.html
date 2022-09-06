@@ -2,32 +2,55 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/style.css">
 <title>診断フォーム</title>
 </head>
 <body>
-<h1>病気診断メーカー</h1>
-<p>採血データを入力すると病気名が診断できます。</p><br><br>
-<form th:action="@{/result}" th:object="${diagnoseForm}" method="post">
-	<div class="byouki">
-		<div class="des">糖尿病診断</div>
-		<input type="number" th:field="*{kettochi}" placeholder="血糖値">mg/dL</div>
-		<div>
-			<input type="number" th:field="*{hba1c}" placeholder="HbA1c">%</div>
-		<div>
-		<div class="des">高血圧診断</div>
-			<input type="number" th:field="*{syusyuku}"  placeholder="収縮期血圧">mm/Hg</div>
-		<div>
-			<input type="number" th:field="*{kakutyo}"  placeholder="拡張期血圧">mm/Hg</div>
-		<div>
-		<div class="des">脂質異常症診断</div>
-			<input type="number" th:field="*{hdl}"  placeholder="HDLコレステロール">mg/dL</div>
-		<div>
-			<input type="number" th:field="*{ldl}"  placeholder="LDLコレステロール">mg/dL</div>
-		<div>
-			<input type="number" th:field="*{tg}"  placeholder="中性脂肪">mg/dL</div>
-	
-	<div class="button"><p><input type="submit" value="結果表示" /></p></div>
-</form>
+	<h1>病気診断メーカー</h1>
+	<div class="hakui">
+		<p>
+			<img th:src="@{/images/白衣.png}">
+		</p>
+		<div class="balloon">
+			<p>採血データを入力すると病気名が診断できます。</p>
+		</div>
+	</div>
+	<form class="diagnose" th:action="@{/result}"
+		th:object="${diagnoseForm}" method="post">
+		<div class="byouki">
+			<div class="des">糖尿病診断</div>
+			<div>
+				<input type="number" placeholder="血糖値" id="kettochi" name="kettochi"
+					value="">mg/dL
+			</div>
+			<div>
+				<input type="number" placeholder="HbA1c" id="hba1c" name="hba1c"
+					value="" step=0.1>%
+			</div>
+			<div>
+				<div class="des">高血圧診断</div>
+				<input type="number" placeholder="収縮期血圧" id="syusyuku"
+					name="syusyuku" value="">mm/Hg
+			</div>
+			<div>
+				<input type="number" placeholder="拡張期血圧" id="kakutyo" name="kakutyo"
+					value="">mm/Hg
+			</div>
+			<div>
+				<div class="des">脂質異常症診断</div>
+				<input type="number" placeholder="HDLコレステロール" id="hdl" name="hdl"
+					value="">mg/dL
+			</div>
+			<div>
+				<input type="number" placeholder="LDLコレステロール" id="ldl" name="ldl"
+					value="">mg/dL
+			</div>
+			<div>
+				<input type="number" placeholder="中性脂肪" id="tg" name="tg" value="">mg/dL
+			</div>
+
+			<input type="submit" value="診断する" class="button" />
+		</div>
+	</form>
 </body>
 </html>
